@@ -9,3 +9,7 @@ class State(BaseModel, Base):
     __tablename__ = "states"
     name = Column(String(128), nullable=False)
     cities = relationship("City", backref="state")
+
+    @getter
+    def cities(self):
+        """Returns list of City instances with state_id = state.id"""
