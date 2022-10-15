@@ -14,4 +14,6 @@ def display():
     return "Hello HBNB!"
 
 
-app.run(host="0.0.0.0", port=5000)
+if __name__ == "main":
+    app.url_map.strict_slashes = False
+    app.run(host="0.0.0.0", port=5000)
