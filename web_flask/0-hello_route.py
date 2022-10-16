@@ -1,10 +1,7 @@
 #!/usr/bin/python3
 '''this scripts starts a Flask web application'''
-
-
 from flask import Flask
 
-__name__ = "main"
 app = Flask(__name__)
 
 
@@ -14,6 +11,7 @@ def hello():
     or any url starting with /'''
     return "Hello HBNB!"
 
-if __name__ == "main":
+
+if __name__ == "__main__":
     app.url_map.strict_slashes = False
     app.run(host='0.0.0.0', port=5000)
