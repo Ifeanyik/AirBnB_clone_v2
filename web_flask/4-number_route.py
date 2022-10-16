@@ -48,6 +48,11 @@ def weird(text="is cool"):
         return "Python {}".format(new_text)
 
 
+@app.route("/number/<int:n>")
+def catch_numbers(n):
+    '''Check if <n> is a number'''
+    return "%d is a number" % n
+
 if __name__ == "__main__":
     app.url_map.strict_slashes = False
     app.run(host="0.0.0.0", port=5000)
