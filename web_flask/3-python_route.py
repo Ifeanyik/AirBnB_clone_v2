@@ -31,6 +31,7 @@ def c_is_what(text):
     return "C {}".format(new_text)
 
 
+@app.route("/python/(<text>)")
 @app.route("/python/<text>")
 @app.route("/python/")
 @app.route("/python")
@@ -43,6 +44,8 @@ def weird(text="is cool"):
         for i in text:
             if i != "_":
                 new_text += i
+            elif i == "(" or i == ")":
+                continue
             else:
                 new_text += i
         return "Python {}".format(new_text)
