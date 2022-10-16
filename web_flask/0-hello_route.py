@@ -4,13 +4,14 @@
 
 from flask import Flask
 
+__name__ = "main"
 app = Flask(__name__)
 
 
 @app.route('/')
 def hello():
     '''this function returns a string
-    for any url starting with /'''
+    or any url starting with /'''
     return "Hello HBNB!"
 
 if __name__ == "main":
