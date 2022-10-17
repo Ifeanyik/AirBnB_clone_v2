@@ -22,13 +22,22 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
         else:
-            kwargs['updated_at'] = datetime.strptime(kwargs['updated_at'],
-                                                     '%Y-%m-%dT%H:%M:%S.%f')
-            kwargs['created_at'] = datetime.strptime(kwargs['created_at'],
-                                                     '%Y-%m-%dT%H:%M:%S.%f')
-            del kwargs['__class__']
+            if 'updated_at' not in kwargs:
+                kwargs['updated_at'] = datetime.strptime(str(datetime.now()),
+                                                     '%Y-%m-%d %H:%M:%S.%f')
+            else:
+                kwargs['updated_at'] = datetime.strptime(kwargs['updated_at'],
+                                                     '%Y-%m-%d %H:%M:%S.%f') 
+            if 'created_at' not in kwargs:
+                kwargs['created_at'] = datetime.strptime(str(datetime.now()),
+                                                     '%Y-%m-%d %H:%M:%S.%f')
+            else:
+                kwargs['created_at'] = datetime.strptime(kwargs['created_at'],
+                                                     '%Y-%m-%d %H:%M:%S.%f')
+            if '__class__' in kwargs:
+                del kwargs['__class__']
             for arg in kwargs:
-                o_string = "self.{} = {}".format(arg, keargs[arg])
+                o_string = "self.{} = {}".format(arg, kwargs[arg])
                 eval(o_string)
             self.__dict__.update(kwargs)
 
