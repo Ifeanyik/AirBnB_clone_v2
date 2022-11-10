@@ -12,6 +12,11 @@ def hello():
     return "Hello HBNB!"
 
 
+@app.route('/airbnb-onepage/', strict_slashes=False)
+def serve_onepage():
+    return "Hello ALX Africa!!!"
+
+
 if __name__ == "__main__":
     app.url_map.strict_slashes = False
     app.run(host='0.0.0.0', port=5000)
